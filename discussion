@@ -1,0 +1,36 @@
+ARRAY
+appointmentArr
+Example: "High; 15/10/2018 0800; 1000; CSC1401 class; D113; Twmb campus, USQ"
+
+// ?How do we want to handle the appointment array? Do we want to have it so for example appointment 1 starts at appointmentArr[0] and appointment 2 starts at appointmentArr[5]? or do we want to have nested arrays so the example given above all sits within appointmentArr[0]  then appointment 2 is in appointmenArr[1] etc.? I think the first method is easier. Then you can use modulus 5 (%5) to determine how many appointments there are. Any other ideas here?
+
+VALIDATION PLANS
+isValidDate(input)
+Return true/false
+
+isValidTime()
+
+FUNCTIONS
+showAppointment(appointmentArr)
+// print to screen each object in the array appropriately
+return = none
+
+addAppointment()
+//
+
+isConcurrentAppointment(date, startTime, endTime)
+//
+date example: '15/10/2018'
+startTime example: '0800'
+endTime example: '1000'
+return true/false
+
+shuffleAppointments(apppointmentArr)
+//
+appointmentArr example defined above
+
+sortAppointments()
+
+-----------------------------------------------------------------------------------------
+//he appointmentArray could be an issue. I'm not sure how the markers' want it set up but a single array containing all the details in order could cause issues a bit later on. An array of infinite length contains a lot of failure points. Calling a particular feature would depend on searching for arguments using a template of sorts (Regular Expression), in addition we wouldn't be able to sort the array itself without losing the relationships between different appointments and their features. I was considering creating a new JS object for each appointment, so instead of an array holding all information for ALL appointments, each appointment would be it's own object in the program, with it's own features that we can retrieve from it. This means it's easier to associate an appointment with it's particular data. Problem is that means we have loose objects flying all over the place, and to keep track of them we'd need to create an array listing the object names.
+//(for a bit more info see the attached Textbook pdf. Check out chapter 3, on pge. 20) - Niall
