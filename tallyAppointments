@@ -1,0 +1,36 @@
+<html>
+    <head>
+	<meta charset="UTF-8">
+	<title>Personal Diary</title>
+        <script>
+		//VARIABLES
+		var appointmentArr = [];
+		
+		//CONSTANTS
+		
+		//FUNCTIONS 
+    
+    function tallyAppointments(){
+    //calculate the number of appointments each day by using the tally plan and display the information on 
+    //diary as a summary when the “Summary” button is pressed
+    }
+
+		function assignAppointmentToArray(priority, date, start, end, code, location) {
+		//Creates an appointment objects using the details input by user and stores all appointments in an array 
+			appointmentArr[i] = {
+				priorityStatus: priority,
+				dateOfAppointment: date,
+				startTime: start,
+				endTime: end,
+				courseCode: code,
+				locationOfAppointment: location
+			}; 	
+		}
+		
+		//MAIN CODE
+        </script>
+    </head>
+<body>   
+
+    </body>
+</html>
