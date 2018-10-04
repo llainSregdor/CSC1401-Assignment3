@@ -41,6 +41,9 @@
 	
       
 		 function showAppointment(){
+		 //a function to show all existing appointments in the diary IDE
+		 //Expected Input: |whatever arguments required for function and it's type| 
+		 //Output: |print all existing appointments in the table form to the IDE|
       document.writeln('<table border="1">');
       document.writeln('<tr>');
       document.writeln('<td align="center">Priority</td>');
