@@ -12,7 +12,7 @@
     function isConcurrentAppointment(){
     //validate if the input data for the Date, Start Time and End Time of an appointment makes it concurrent to any existing 
     //appointments in appointmentArr. 
-    //Expected Input: |whatever arguments required for function and definition |  
+    //Expected Input: |whatever arguments required for function and it's type|  
     //Output: | alert an error message and return true if the input appointment is concurrent with any existing appointments 
     //in appointmentArr, otherwise, return false|.
       
