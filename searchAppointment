@@ -11,7 +11,9 @@
 		//FUNCTIONS 
     
     function searchAppointment(){
-    //search the appointment records using the keywords given by the user and display the searching results on the diary
+    //search the appointment records using the keywords given by the user
+    //Expected Input: |whatever arguments required for function and it's type|  
+    //Output: |display the searching results on the diary|
     
     }
     
