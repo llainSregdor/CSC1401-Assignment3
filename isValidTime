@@ -1,0 +1,37 @@
+<html>
+    <head>
+	<meta charset="UTF-8">
+	<title>Personal Diary</title>
+        <script>
+		//VARIABLES
+		var appointmentArr = [];
+		
+		//CONSTANTS
+		
+		//FUNCTIONS 
+    function isValidTime() {
+    //Validate the data input for the Date, Start Time and End Time of an appointment. 
+    //The function should alert an error message and return false if any input is invalid, otherwise, return true.
+    
+    }
+
+    
+		function assignAppointmentToArray(priority, date, start, end, code, location) {
+		//Creates an appointment objects using the details input by user and stores all appointments in an array 
+			appointmentArr[i] = {
+				priorityStatus: priority,
+				dateOfAppointment: date,
+				startTime: start,
+				endTime: end,
+				courseCode: code,
+				locationOfAppointment: location
+			}; 	
+		}
+		
+		//MAIN CODE
+        </script>
+    </head>
+<body>   
+
+    </body>
+</html>
