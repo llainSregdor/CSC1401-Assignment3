@@ -1,0 +1,30 @@
+<html>
+    <head>
+	<meta charset="UTF-8">
+	<title>Personal Diary</title>
+        <script>
+		//VARIABLES
+		var appointmentArr = [];
+		
+		//CONSTANTS
+		
+		//FUNCTIONS 
+          	//Creates an appointment objects using the details input by user and stores all appointments in an array 
+		function assignAppointmentToArray(priority, date, start, end, code, location) {
+			appointmentArr[i] = {
+				priorityStatus: priority,
+				dateOfAppointment: date,
+				startTime: start,
+				endTime: end,
+				courseCode: code,
+				locationOfAppointment: location
+			}; 	
+		}
+		
+		//MAIN CODE
+        </script>
+    </head>
+<body>   
+
+    </body>
+</html>
