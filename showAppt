@@ -1,0 +1,69 @@
+<html>
+    <head>
+		<meta charset="UTF-8">
+		<title>Personal Diary</title>
+        <script>
+			var appointmentArr = [];
+			
+			
+			
+			
+        </script>
+    </head>
+    <body>
+    </body>
+</html>
+<html>
+    <head>
+	<meta charset="UTF-8">
+	<title>Personal Diary</title>
+        <script>
+		//VARIABLES
+		var appointmentArr = [];
+		var appointment;
+		var appointmentTemp = {};
+	  var enterAnotherAppointment = true;
+	  i = 0;	
+		//CONSTANTS
+		
+		//FUNCTIONS 
+          	//Creates an appointment objects using the details input by user and stores all appointments in an array 
+		function assignAppointmentToArray(priority, date, start, end, code,location) {
+			appointmentArr[i] = {
+				priority: document.getElementById('priority').checked,
+				date: document.getElementById('date').value,
+				start: document.getElementById('start').selectedIndex,
+				end: document.getElementById('end').selectedIndex,
+				code: document.getElementById('code').value,
+				location: document.getElementById('location').value,
+			}; 	
+		}
+	
+      
+		 function showAppointment(){
+      document.writeln('<table border="1">');
+      document.writeln('<tr>');
+      document.writeln('<td align="center">Priority</td>');
+      document.writeln('<td align="center">Date</td>');
+      document.writeln('<td align="center">Start</td>');
+      document.writeln('<td align="center">End</td>');
+      document.writeln('<td align="center">Subject</td>');
+      document.writeln('<td align="center">Venue</td>');
+      document.writeln('</tr>');
+      
+		  while (appointment = appointmentArr[i]){
+		  i = 0;
+      document.writeln('<tr>');
+      document.writeln('<td align="center">'+appointmentArr[index].priorityStatus+'</td>');
+      document.writeln('<td align="center">'+appointmentArr[index].dateOfAppointment+'</td>');
+      document.writeln('<td align="center">'+appointmentArr[index].startTime+'</td>');
+      document.writeln('<td align="center">'+appointmentArr[index].endTime+'</td>');
+      document.writeln('<td align="center">'+appointmentArr[index].courseCode+'</td>');
+      document.writeln('<td align="center">'+appointmentArr[index].locationOfAppointment+'</td>');
+      document.writeln('</tr>');
+      i++;
+			}
+			document.writeln('</table>');
+			}
+			    </body>
+</html>
