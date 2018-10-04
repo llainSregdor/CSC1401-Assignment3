@@ -11,7 +11,8 @@
 		//FUNCTIONS 
     function isValidTime() {
     //Validate the data input for the Date, Start Time and End Time of an appointment. 
-    //The function should alert an error message and return false if any input is invalid, otherwise, return true.
+    //Expected Input: |whatever arguments required for function and it's type|  
+    //Output: |alert an error message and return false if any input is invalid, otherwise, return true.|
     
     }
 
