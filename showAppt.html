@@ -22,8 +22,8 @@
 		var appointmentArr = [];
 		var appointment;
 		var appointmentTemp = {};
-	  var enterAnotherAppointment = true;
-	  i = 0;	
+	  	var enterAnotherAppointment = true;
+	  	i = 0;	
 		//CONSTANTS
 		
 		//FUNCTIONS 
@@ -44,29 +44,36 @@
 		 //a function to show all existing appointments in the diary IDE
 		 //Expected Input: |whatever arguments required for function and it's type| 
 		 //Output: |print all existing appointments in the table form to the IDE|
-      document.writeln('<table border="1">');
-      document.writeln('<tr>');
-      document.writeln('<td align="center">Priority</td>');
-      document.writeln('<td align="center">Date</td>');
-      document.writeln('<td align="center">Start</td>');
-      document.writeln('<td align="center">End</td>');
-      document.writeln('<td align="center">Subject</td>');
-      document.writeln('<td align="center">Venue</td>');
-      document.writeln('</tr>');
+      		document.writeln('<table border="1">');
+      		document.writeln('<tr>');
+      		document.writeln('<td align="center">Priority</td>');
+      		document.writeln('<td align="center">Date</td>');
+      		document.writeln('<td align="center">Start</td>');
+      		document.writeln('<td align="center">End</td>');
+      		document.writeln('<td align="center">Subject</td>');
+      		document.writeln('<td align="center">Venue</td>');
+      		document.writeln('</tr>');
       
-		  while (appointment = appointmentArr[i]){
-		  i = 0;
-      document.writeln('<tr>');
-      document.writeln('<td align="center">'+appointmentArr[index].priorityStatus+'</td>');
-      document.writeln('<td align="center">'+appointmentArr[index].dateOfAppointment+'</td>');
-      document.writeln('<td align="center">'+appointmentArr[index].startTime+'</td>');
-      document.writeln('<td align="center">'+appointmentArr[index].endTime+'</td>');
-      document.writeln('<td align="center">'+appointmentArr[index].courseCode+'</td>');
-      document.writeln('<td align="center">'+appointmentArr[index].locationOfAppointment+'</td>');
-      document.writeln('</tr>');
-      i++;
+		//!! while (appointment = appointmentArr[i]){ 
+			 //""" maybe easier to use a while loop that relies on the current 'appointment' index to be less than appointmentArr.length
+		//!!  	i = 0; 
+			 //""" This is an issue with Javascript itself, i is a previously declared variable and will change the value of 'i' for all functions. Might be an issue?
+      			document.writeln('<tr>');
+      		//!!	document.writeln('<td align="center">'+appointmentArr[index].priorityStatus+'</td>'); //""" the object we're creating has the values in it as defined by function assignAppointmentToArray.
+			 //""" to call the particular value of 'priority' i think it should use ".priority" or ".date" and so on.
+      			document.writeln('<td align="center">'+appointmentArr[index].dateOfAppointment+'</td>');
+      			document.writeln('<td align="center">'+appointmentArr[index].startTime+'</td>');
+			document.writeln('<td align="center">'+appointmentArr[index].endTime+'</td>');
+      			document.writeln('<td align="center">'+appointmentArr[index].courseCode+'</td>');
+      			document.writeln('<td align="center">'+appointmentArr[index].locationOfAppointment+'</td>');
+      			document.writeln('</tr>');
+      			i++;
+			 
+		//!! //""" maybe consider looking at 'For/In' loops. It's used to access each property within an object. 
+		     //""" So use the While loop to iterate over the Array of objects, Then the For/In loop to print the values in each appointment object.
+		     //""" https://www.w3schools.com/jsref/jsref_forin.asp talks about the forin loop. (I'm not the best at explaining things!)
 			}
-			document.writeln('</table>');
-			}
+		document.writeln('</table>');
+		}
 			    </body>
 </html>
