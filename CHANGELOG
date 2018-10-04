@@ -1,0 +1,39 @@
+# CSC1401-Assignment3
+Personal Diary in Javascript
+
+4 October - Niall
+------------------------------------------------
+I've made a few edits in the gitHub container. Just trying to keep things a bit organised. I've kept the 'main.html' where we'll keep the unified code. I've created a few new files, one for each function. I think it's easier to debug code when you divide and conquer. 
+
+
+---------------------------------------------------------------------------------------------------------------------
+4 October – Mitch
+-----------------------------------------------------------
+I’ve been messing around with the show appointment function again this morning without much success but running out of time now as i have to go back to work.
+- ive tried to get the selections in the IDE to contribute to the array rather than the prompts
+-attempted to reference them to the array by using getElementById
+-tried to output them as a table
+
+i think i have the basics there, but still needs a bit of tinkering as its not really working as i hoped. would either of you guys mind having a bit of a look over it and see if you can see where im slipping up.
+
+ill just email you this update as the previous addition to github is working so want to just leave it as it is.
+i have to sleep at work tonite and work all day tomorrow but start four days off from saturday so can put in a bit more effort then
+
+-------------------------------------------------------------------------------------------------------------------------
+
+3 October – Will
+---------------------------------------------------------------------------
+Note the second while loop is just printing each of the array elements (the appointments) to the screen. I used this for troubleshooting purposes. The actual code we want to build on is lines 6-21. If you want to test it yourself just remove the /* */ comment tags.
+
+I'll upload the code to github shortly. I'll turn it into a function and add the other appointment details to it first.
+ADDTL
+I've cleaned it up into a simple function and uploaded to GitHub. I started a 'main' file there. I'm not sure how GitHub is normally utilised so feel free to restructure the document however is necessary.
+
+Was someone working on the user interface? That part seems quite time consuming.
+
+----------------------------------------------------------------------------------------------------------------------------
+1 October – Mitch
+------------------------------------------------------------------------------
+Interactive Editing Environment
+
+-------------------------------------------------------------------------------------------------------------------------------
