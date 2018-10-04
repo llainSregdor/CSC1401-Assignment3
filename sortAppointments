@@ -13,6 +13,8 @@
     function sortAppointments(){
     //Allow the user to sort all appointments in appointmentArr based on one of the following attributes; 
     //Priority, Date, Subject, Date, or Venueand display the sorted appointments on diary
+    //Expected Input: |whatever arguments required for function and it's type| 
+    //Output: |Display the sorted appointments on diary when an attribute is selected in the dropdown list|
     
     }
     
