@@ -9,8 +9,10 @@
 		//CONSTANTS
 		
 		//FUNCTIONS 
-          	//Creates an appointment objects using the details input by user and stores all appointments in an array 
+          	 
 		function assignAppointmentToArray(priority, date, start, end, code, location) {
+		//Creates an appointment objects using the details input by user and stores all appointments in an array.
+		//Expected input of |define the required input of priority,date,start,end,code and location.ie= Boolean or str of x length |
 			appointmentArr[i] = {
 				priorityStatus: priority,
 				dateOfAppointment: date,
