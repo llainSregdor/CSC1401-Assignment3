@@ -11,8 +11,9 @@
 		//FUNCTIONS 
     
     function tallyAppointments(){
-    //calculate the number of appointments each day by using the tally plan and display the information on 
-    //diary as a summary when the “Summary” button is pressed
+    //Calculate the number of appointments each day by using the tally plan
+    //Expected Input: |whatever arguments required for function and it's type| 
+    //Output: | display the information on diary as a summary when the “Summary” button is pressed|
     }
 
 		function assignAppointmentToArray(priority, date, start, end, code, location) {
