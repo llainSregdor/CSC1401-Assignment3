@@ -13,7 +13,8 @@
     
     function isValidDate(){
     //function to validate the data input for the Date attribute of an appointment. 
-    //The function should alert an error message and return false if the input is invalid, otherwise, return true.
+    //Expected Input: |whatever arguments required for function and it's type|  
+    //Output: |alert an error message and return false if the input is invalid, otherwise, return true.|
     }
 
 		function assignAppointmentToArray(priority, date, start, end, code, location) {
