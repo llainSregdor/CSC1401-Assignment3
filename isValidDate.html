@@ -16,19 +16,136 @@
     //Expected Input: |whatever arguments required for function and it's type|  
     //Output: |alert an error message and return false if the input is invalid, otherwise, return true.|
     }
+<html>
+<head>
+<script>
 
-		function assignAppointmentToArray(priority, date, start, end, code, location) {
-    //Creates an appointment objects using the details input by user and stores all appointments in an array 
-    			appointmentArr[i] = {
-				priorityStatus: priority,
-				dateOfAppointment: date,
-				startTime: start,
-				endTime: end,
-				courseCode: code,
-				locationOfAppointment: location
-			}; 	
-		}
-		
+//Variables
+//newDate = document.getElementById('date').value;//
+newDate = '29/2/2019'//this just for testing - youll notice that this will only work if date is entered with / seperating numerals. 
+
+//alert(newDate); 
+
+//function isValidDate(){
+var dateString = newDate.split('/');
+var yearCurrent = 18;
+var century = 100;
+var thisCentury = 2000;
+var startNextCentury = 2100;
+var year; 
+var startYear = 1583;
+var month = dateString[1];
+var monthNumMin = 1;
+var monthNumMax = 12;
+var day = dateString[0]; 
+var daysInMonth 
+var leapYear;
+var monthAdd = 2 
+var thirtyDayMonth = '04%06%09%11%24%26%29';
+var thirtyOneDayMonth ='01%03%05%07%08%10%12%21%23%25%27%28';
+var twentyEightDayMonth = '02%22';
+var checkMonth
+var daysInMonthValid
+var monthValid;
+var yearValid;
+var dateValid;
+//some of these variables could be changed to be constants
+//Set format of year//
+
+
+//if user enters the year as two-digits ie '17', convert to year 2117 as cannot book appointments in the past
+if (parseInt(dateString[2])<yearCurrent) {
+    year = startNextCentury + parseInt(dateString[2]);
+}
+//converts two digit entry to four digit for analysis ie. 2018
+else {
+    if(parseInt(dateString[2])>=yearCurrent && parseInt(dateString[2])< century){
+    year = thisCentury + parseInt(dateString[2]);
+    }
+//Year entered in four-digit format
+    else{
+    year = parseInt(dateString[2]);
+    }
+}
+
+//Validate year -  year must be greater than 1583 and not before this year
+while (year<startYear|| year< (yearCurrent + thisCentury)){
+alert('invalid year input')
+year = prompt('change year input');
+}
+yearValid = true
+
+//Check if year is leap year
+if (((year%400 == 0) || (year%4 == 0)) && (year%100 != 0)){
+    leapYear = true
+}
+else {
+    leapYear = false
+}
+
+//Validate month - must be between 1 for January and 12 for Decemeber 
+
+while (month<monthNumMin || month>monthNumMax){
+monthValid = false;
+alert('invalid month input');
+month = prompt('change month input');
+}
+monthValid = true
+
+//Validate days in month
+//Ensure month is written as two digits, create a checkMonth which assigns arbitrary value of month value + 20 for string search
+if (month > 0 && month <10 ){
+checkMonth = monthAdd + month
+}
+else {
+checkMonth = month
+}
+
+if (checkMonth.indexOf(thirtyDayMonth)){
+daysInMonth = 30;
+}
+if (checkMonth.indexOf(thirtyOneDayMonth)){
+daysInMonth = 31;
+}
+if (checkMonth.indexOf(twentyEightDayMonth) && leapYear == false){
+daysInMonth = 28;
+}
+if (checkMonth.indexOf(twentyEightDayMonth) && leapYear == true){
+daysInMonth = 29;
+}
+
+if (day >= 1 && day <= daysInMonth){
+    daysInMonthValid = true;
+}
+else{
+    daysInMonthValid = false;
+}
+
+//Validate complete date - the while loop on this is messing up - can anyone have a look?
+while ((daysInMonthValid == false) || (monthValid == false) || (yearValid == false)){
+dateValid = false;
+alert ('Invalid date input');
+newDate = prompt ('Enter new date','dd/mm/yyyy');
+}
+dateValid = true;
+alert('Date valid');
+//}//end of function parentheses*/
+
+
+
+alert(day);
+alert(daysInMonthValid);
+alert(month);
+alert(checkMonth);
+alert(monthValid);
+alert(year);
+alert(leapYear);
+alert(yearValid);
+ 
+
+</script>
+</head>
+<body>
 		//MAIN CODE
         </script>
     </head>
