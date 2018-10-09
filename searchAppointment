@@ -14,7 +14,26 @@
     //search the appointment records using the keywords given by the user
     //Expected Input: |whatever arguments required for function and it's type|  
     //Output: |display the searching results on the diary|
-    
+    var index = 0;
+    var out = "";
+    //iterate over appointment arrauy
+    while(index <= appointmentArr.length-1){
+    	var x;
+      //searches each property in object
+    	for (x in appointmentArr[index]) {
+      //if search term is equal to current property, adds all properties to initialised output string
+      
+   		if (appointmentArr.x = searchTerm) {
+   			for (x in appointmentArr[index]){
+   				out += appointmentArr[x] + "";
+   			}
+   			index++
+   		}else{
+   			index++
+   		}
+    	}
+    alert(out);	
+    }    
     }
     
 		function assignAppointmentToArray(priority, date, start, end, code, location) {
