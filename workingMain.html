@@ -52,9 +52,79 @@
 			i+=1;
 		}
 		//Find and display on IDE each appointment that is added
-		function showAppointment(){
+		/*function showAppointment(){
 			alert(appointmentArr[i-1].endTime);
-		}
+		}*/
+	 function showAppointment(){
+	 var counter = 1;
+     var table = document.getElementById("tableOne");
+     var row = table.insertRow(counter);
+     var tPriority = row.insertCell(0);
+     var tDate = row.insertCell(1);
+     var tStart = row.insertCell(2);
+     var tEnd = row.insertCell(3);
+     var tSubject = row.insertCell(4);
+     var tVenue = row.insertCell(5);
+     //add text
+     tPriority.innerHTML = appointmentArr[i-1].priorityStatus;
+     tDate.innerHTML = appointmentArr[i-1].dateOfAppointment;
+     tStart.innerHTML = appointmentArr[i-1].startTime;
+     tEnd.innerHTML = appointmentArr[i-1].endTime;
+     tSubject.innerHTML = appointmentArr[i-1].subject;
+     tVenue.innerHTML = appointmentArr[i-1].venue
+
+	 }
+
+
+
+     /* var j;
+      var k = 0;
+      var temp = appointmentArr[k];
+      var l;
+		  var table = document.getElementById("tableone");
+		  var newRow;
+		  var cell;
+		  
+		  for(j = 0; j<temp.length; j++){
+		  newRow = tableone.insertRow(tableone.length);
+		  for(l = 0; l<temp[i].length; l++){
+		  cell = newRow.insertCell(k);
+		  cell.innerHTML = temp[i][k];
+		  }
+		  }
+		  }
+		  //while (j < appointmentArr.length){
+		  /*for (j in temp) {
+		  var text = '';
+		  
+		  text += temp[j] + '' ;
+		  }*/
+		  /*document.writeln('<td align="center">'+temp.priority+'</td>');
+      document.writeln('<td align="center">'+temp.date+'</td>');
+      document.writeln('<td align="center">'+temp.start+'</td>');
+      document.writeln('<td align="center">'+temp.end+'</td>');
+      document.writeln('<td align="center">'+temp.code+'</td>');
+      document.writeln('<td align="center">'+temp.location+'</td>');
+      document.writeln('</tr>');*/
+		  
+		  
+			
+			
+			//j++;
+			 
+			/*document.writeln('<table border="1">');
+      document.writeln('<tr>');
+      document.writeln('<td align="center">Priority</td>');
+      document.writeln('<td align="center">Date</td>');
+      document.writeln('<td align="center">Start</td>');
+      document.writeln('<td align="center">End</td>');
+      document.writeln('<td align="center">Subject</td>');
+      document.writeln('<td align="center">Venue</td>');
+      document.writeln('</tr>');
+      document.writeln('<tr>');*/
+      
+      
+			//document.writeln('</table>');
 		//MAIN CODE
 		</script>
 			<style>
@@ -178,10 +248,10 @@
 				<div class="col-2">
 					<div class="wrapperradio">
 						<div class="radio1">
-							<input type="radio" id="priorityHigh"  name='priorityCheck" value="High"  checked />High
+							<input type="radio" id="priorityHigh" name="prioritycheck" value=1 checked />High
 						</div>
-						<div class="radio2"> 
-							<input type="radio" id="priorityLow" name="priorityCheck" value="Low" />Low
+						<div class="radio2">
+							<input type="radio" id="priorityLow" name="prioritycheck" value=1 />Low
 						</div>
 					</div>
 					<input type="text"  id="subject" />
@@ -234,6 +304,17 @@
 				</div>
 			</div>
 			<h2 align='center'><input type="button"  value="Add Appointment" onclick="addAppointment()"/></h2>
+<table id= "tableOne" border = "1">
+  <tr>
+    <th>Priority</th>
+    <th>Date</th>
+    <th>Start</th>
+    <th>End</th>
+    <th>Course</th>
+    <th>Venue</th>
+  </tr>
+</table>
+
 		</form>
     </body>
 </html>
