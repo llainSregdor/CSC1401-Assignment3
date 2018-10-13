@@ -13,14 +13,17 @@
 		var newVenue = '';
 		var i = 0;
 		var validDate = false;
+		var timeValid;
 		//CONSTANTS
+		const VALID_START = 700;
+		const VALID_END = 1900;
 		//FUNCTIONS 
           	
 		//When user clicks Add Appointment button appointment details are stored to temp variables, input data is validated, stored to appointment array and IDE tables updated.
 		function addAppointment() {
 			newAppointment();
 			isValidDate();
-			//isValidTime();
+			isValidTime();
 			//isConcurrentAppointment();
 			assignAppointmentToArray(newPriority,newDate,newStart,newEnd,newSubject,newVenue);
 			showAppointment();
@@ -93,10 +96,12 @@
 			isValidMonth();
 			daysInMonthFunc();
 			isValidDay();
-		} return newDate = day+'/'+month+'/'+year;
-		validMonth = false;00
+		} 
+		validMonth = false;
 		validYear = false;
 		validDay = false;
+		return newDate = day+'/'+month+'/'+year;
+
 		function isValidYear(){
 			//converts two digit entry to four digit for analysis ie. 2018
  			if(dateString[2].length<=2){ year = 2000 + parseInt(dateString[2])} 
@@ -136,7 +141,26 @@
 		} return validDay = true
 		}
 	}
-      
+      function isValidTime(){
+		//while(dateValid == true){  //date must be valid before proceeding to time validation
+		var startTime = newStart;
+		var endTime = newEnd; 
+  		while(startTime<=VALID_START || startTime>=VALID_END||endTime<=VALID_START||endTime>=VALID_END){
+    		alert('Times outside of allowable hours');
+    		startTime = parseInt(prompt('Enter start time',));
+   			endTime = parseInt(prompt('Enter end time',));  
+   		}
+   		while (startTime>=endTime){ 
+   		 	alert ('Start time after end time');
+   			startTime = parseInt(prompt('Re-enter start time'));
+  			endTime = parseInt(prompt('Re-enter end time'));
+  		} timeValid = true;
+    	if (timeValid == true){ 
+    		newStart = startTime;
+    		newEnd = endTime;
+    		timeValid = false;
+    	}
+ } 
       
 			//document.writeln('</table>');
 		//MAIN CODE
