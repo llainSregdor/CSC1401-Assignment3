@@ -73,7 +73,6 @@
      		tSubject.innerHTML = appointmentArr[i-1].subject;
      		tVenue.innerHTML = appointmentArr[i-1].venue
 	 	}
-
 		function isValidDate(){
 		 var dateString = newDate.split('/');
 		 var thirtyDayMonth =[4,6,9,11];
@@ -94,13 +93,11 @@
 			isValidMonth();
 			daysInMonthFunc();
 			isValidDay();
-		} return validDate = true;
-		validMonth = false;
+		} return newDate = day+'/'+month+'/'+year;
+		validMonth = false;00
 		validYear = false;
 		validDay = false;
-
 		function isValidYear(){
-
 			//converts two digit entry to four digit for analysis ie. 2018
  			if(dateString[2].length<=2){ year = 2000 + parseInt(dateString[2])} 
  				else {year = parseInt(dateString[2])}
@@ -121,9 +118,7 @@
 		month = prompt('Please insert new month,','1-12')
 		} return validMonth = true
 		}
-
 		function daysInMonthFunc(){
-
   		if (thirtyDayMonth.indexOf(month) != -1 ){
   			daysInMonth = 30
   		}
@@ -134,7 +129,6 @@
   			daysInMonth = 31
     		}else {daysInMonth = 28};			
 		} 
-
 		function isValidDay(){
 		 while (day<1 || daysInMonth<day){
 			alert('Day is not valid');
