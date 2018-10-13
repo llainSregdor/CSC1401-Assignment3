@@ -1,89 +1,30 @@
-<html>
-    <head>
-	<meta charset="UTF-8">
-	<title>Personal Diary</title>
-        <script>
-		//VARIABLES
-		var appointmentArr = [];
-		
-		//CONSTANTS
-		
-		//FUNCTIONS 
-    function isValidTime() {
-    //Validate the data input for the Date, Start Time and End Time of an appointment. 
-    //Expected Input: |whatever arguments required for function and it's type|  
-    //Output: |alert an error message and return false if any input is invalid, otherwise, return true.|
-    <html>
-<head>
 <script>
 //Constants
-
 const VALID_START = 8;
 const VALID_END = 18;
 
-//Variables
-
-var dateValid = true;
-var startTime = 7; //change to be input from IED
-var endTime = 12;  //change to be input from IED
-var timeValid;
-
-//function isValidTime(){
-while(dateValid == true){  //date must be valid before proceeding to time validation
-  
-  while((startTime<VALID_START || startTime>VALID_END)||(endTime<VALID_START||endTime>VALID_END)){
-    alert('Times outside of meeting hours');
-    startTime = prompt('Enter start time','0800 to 1800');
-    endTime = prompt('Enter end time','0800 to 1800');
-    
-    
-   }
-    while (startTime>endTime){ 
-    alert ('Start time after end time');
-    startTime = prompt('Re-enter start time');
-    endTime = prompt('Re-enter end time');
-    
-    }
-    
-    timeValid = true;
-    
-    
- if (timeValid == true){
- alert('Time validated');
- }
- 
- 
-}
-alert('Date invalid');
-//}//end of function parentheses
-
-// the issue im having is that the startTime>endTime argument keeps referring back to the values of startTime and endTime listed in the variables. should be able to resolve once these values are taken from the IED environment
-//will have to insert a function(?) that reduces 0800 to 8 for example, perhaps convert 0800 to a string and extract the '8'.	    
+      function isValidTime(){
+		//while(dateValid == true){  //date must be valid before proceeding to time validation
+		var startTime = newStart;
+		var endTime = newEnd; 
+  		while(startTime<=VALID_START || startTime>=VALID_END||endTime<=VALID_START||endTime>=VALID_END){
+    		alert('Times outside of allowable hours');
+    		startTime = parseInt(prompt('Enter start time',));
+   			endTime = parseInt(prompt('Enter end time',));  
+   		}
+   		while (startTime>=endTime){ 
+   		 	alert ('Start time after end time');
+   			startTime = parseInt(prompt('Re-enter start time'));
+  			endTime = parseInt(prompt('Re-enter end time'));
+  		} timeValid = true;
+    	if (timeValid == true){ 
+    		newStart = startTime;
+    		newEnd = endTime;
+    		timeValid = false;
+    	}
+ }    
 </script>
 </head>
 <body>
 
 </body>
-<html>
-    }
-
-    
-		function assignAppointmentToArray(priority, date, start, end, code, location) {
-		//Creates an appointment objects using the details input by user and stores all appointments in an array 
-			appointmentArr[i] = {
-				priorityStatus: priority,
-				dateOfAppointment: date,
-				startTime: start,
-				endTime: end,
-				courseCode: code,
-				locationOfAppointment: location
-			}; 	
-		}
-		
-		//MAIN CODE
-        </script>
-    </head>
-<body>   
-
-    </body>
-</html>
