@@ -12,7 +12,7 @@
 		var newSubject = '';
 		var newVenue = '';
 		var i = 0;
-		
+		var validDate = false;
 		//CONSTANTS
 		//FUNCTIONS 
           	
@@ -55,73 +55,93 @@
 		/*function showAppointment(){
 			alert(appointmentArr[i-1].endTime);
 		}*/
-	 function showAppointment(){
-	 var counter = 1;
-     var table = document.getElementById("tableOne");
-     var row = table.insertRow(counter);
-     var tPriority = row.insertCell(0);
-     var tDate = row.insertCell(1);
-     var tStart = row.insertCell(2);
-     var tEnd = row.insertCell(3);
-     var tSubject = row.insertCell(4);
-     var tVenue = row.insertCell(5);
-     //add text
-     tPriority.innerHTML = appointmentArr[i-1].priorityStatus;
-     tDate.innerHTML = appointmentArr[i-1].dateOfAppointment;
-     tStart.innerHTML = appointmentArr[i-1].startTime;
-     tEnd.innerHTML = appointmentArr[i-1].endTime;
-     tSubject.innerHTML = appointmentArr[i-1].subject;
-     tVenue.innerHTML = appointmentArr[i-1].venue
+		function showAppointment(){
+	 	 var counter = 1;
+     		 var table = document.getElementById("tableOne");
+     		 var row = table.insertRow(counter);
+     		 var tPriority = row.insertCell(0);
+     		 var tDate = row.insertCell(1);
+     		 var tStart = row.insertCell(2);
+     		 var tEnd = row.insertCell(3);
+     		 var tSubject = row.insertCell(4);
+     		 var tVenue = row.insertCell(5);
+   		//add text
+     		tPriority.innerHTML = appointmentArr[i-1].priorityStatus;
+     		tDate.innerHTML = appointmentArr[i-1].dateOfAppointment;
+     		tStart.innerHTML = appointmentArr[i-1].startTime;
+     		tEnd.innerHTML = appointmentArr[i-1].endTime;
+     		tSubject.innerHTML = appointmentArr[i-1].subject;
+     		tVenue.innerHTML = appointmentArr[i-1].venue
+	 	}
 
-	 }
+		function isValidDate(){
+		 var dateString = newDate.split('/');
+		 var thirtyDayMonth =[4,6,9,11];
+	       	 var thirtyOneDayMonth = [1,3,5,7,8,10,12];
+		 var checkMonth;
+		 var year;
+		 var leapYear = false;
+		 var month = parseInt(dateString[1]);
+		 var day = parseInt(dateString[0]);
+		 var daysInMonth;
+		 var validMonth = false;
+	 	 var validDay = false;
+		 var validYear = false;
+		 validDate=false;
+		while (validDay == false || validMonth == false || validYear == false){
+			isValidYear();
+			isLeapYear();
+			isValidMonth();
+			daysInMonthFunc();
+			isValidDay();
+		} return validDate = true;
+		validMonth = false;
+		validYear = false;
+		validDay = false;
 
+		function isValidYear(){
 
+			//converts two digit entry to four digit for analysis ie. 2018
+ 			if(dateString[2].length<=2){ year = 2000 + parseInt(dateString[2])} 
+ 				else {year = parseInt(dateString[2])}
+			//check if year is valid
+			while(year<1583){
+				alert('Year is not valid');
+				year = prompt('Please insert new year more recent than 1583',);
+			} return validYear = true
+		}
+		function isLeapYear(){
+			if ((year % 400) == 0 || (year % 4) == 0 && (year % 100) != 0){
+			leapYear = true
+			} else{leapYear = false}
+		}
+		function isValidMonth(){
+		while (month<1 || month>12 ){
+		alert('Month is not valid');
+		month = prompt('Please insert new month,','1-12')
+		} return validMonth = true
+		}
 
-     /* var j;
-      var k = 0;
-      var temp = appointmentArr[k];
-      var l;
-		  var table = document.getElementById("tableone");
-		  var newRow;
-		  var cell;
-		  
-		  for(j = 0; j<temp.length; j++){
-		  newRow = tableone.insertRow(tableone.length);
-		  for(l = 0; l<temp[i].length; l++){
-		  cell = newRow.insertCell(k);
-		  cell.innerHTML = temp[i][k];
-		  }
-		  }
-		  }
-		  //while (j < appointmentArr.length){
-		  /*for (j in temp) {
-		  var text = '';
-		  
-		  text += temp[j] + '' ;
-		  }*/
-		  /*document.writeln('<td align="center">'+temp.priority+'</td>');
-      document.writeln('<td align="center">'+temp.date+'</td>');
-      document.writeln('<td align="center">'+temp.start+'</td>');
-      document.writeln('<td align="center">'+temp.end+'</td>');
-      document.writeln('<td align="center">'+temp.code+'</td>');
-      document.writeln('<td align="center">'+temp.location+'</td>');
-      document.writeln('</tr>');*/
-		  
-		  
-			
-			
-			//j++;
-			 
-			/*document.writeln('<table border="1">');
-      document.writeln('<tr>');
-      document.writeln('<td align="center">Priority</td>');
-      document.writeln('<td align="center">Date</td>');
-      document.writeln('<td align="center">Start</td>');
-      document.writeln('<td align="center">End</td>');
-      document.writeln('<td align="center">Subject</td>');
-      document.writeln('<td align="center">Venue</td>');
-      document.writeln('</tr>');
-      document.writeln('<tr>');*/
+		function daysInMonthFunc(){
+
+  		if (thirtyDayMonth.indexOf(month) != -1 ){
+  			daysInMonth = 30
+  		}
+	  	else if (leapYear == true && month == 2){
+			daysInMonth = 29
+		}
+  		else if (thirtyOneDayMonth.indexOf(month) != -1 ){
+  			daysInMonth = 31
+    		}else {daysInMonth = 28};			
+		} 
+
+		function isValidDay(){
+		 while (day<1 || daysInMonth<day){
+			alert('Day is not valid');
+			day = prompt('Please insert new day',);
+		} return validDay = true
+		}
+	}
       
       
 			//document.writeln('</table>');
