@@ -16,6 +16,40 @@
     //Expected Input: |whatever arguments required for function and it's type| 
     //Output: |Display the sorted appointments on diary when an attribute is selected in the dropdown list|
     
+ 
+//Sort based on priority   
+    //if(document.getElementById('by').selectedIndex == 0){
+    //if (confirm('Sort by priority') == true) {
+        
+	var priorityStatus = '';
+        var dateOfAppointment = '';
+        var startTime = '';
+        var endTime = '';
+        var courseCode = '';
+        var locationOfAppointment = '';
+        
+        appointmentArr[0] = ['High', '14/10/18', '0800', '1200', 'CSC1401', 'USQ'];
+        appointmentArr[1] = ['Low', '15/10/18', '0900', '1300', 'ENM1500', 'USQ'];
+        appointmentArr[2] = ['High', '16/10/18', '0800', '1400', 'SVY2301', 'USQ'];
+        
+        for (var i = 0; i<appointmentArr.length - 1; i++){
+          
+
+            while ((appointmentArr[i].priorityStatus == 'High') && (appointmentArr[i+1].priorityStatus == 'Low')) { 
+            // Have a problem here where appointmentArr[i] is coming up as undefined in debugger//
+            //Sort plan
+                var temp = appointmentArr[i];
+                appointmentArr[i] = appointmentArr[i+1];
+                appointmentArr[i+1] = temp;
+                
+            }
+        }
+        
+/*alert(appointmentArr[0]);
+alert(appointmentArr[1]);
+alert(appointmentArr[2]);
+alert(appointmentArr);*/
+    }
     }
     
     
@@ -31,6 +65,14 @@
 			}; 	
 		}
 		
+		
+		
+		<html>
+
+<head>
+<script>
+
+
 		//MAIN CODE
         </script>
     </head>
