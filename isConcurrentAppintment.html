@@ -35,38 +35,69 @@
 		<html>
 <head>
 <script>
-
-
-//Constants
-const START_TIMES = new Array('0800', '0900', '1000', '1100', '1200', '1300', '1400', '1500', '1600', '1700'); //Start time won't be 1800 as appointments have to finish by then
-const END_TIMES = new Array ('0900', '1000', '1100', '1200', '1300', '1400', '1500', '1600', '1700','1800');// End time won't be 0800 as no appointments have started before then
-
 //Variables
-var newAppt = new Array('High','15/10/2018','0800','1000','CSC1401','D113');//Most recent appointment added as an array
-var appointmentArr = new Array('High','15/10/2018','0800','1000','CSC1401','D113','High','15/10/2018','1200','1500','CSC1401','D113');//Array of all appointments
+var appointmentArr = new Array('priority', 'date', 'start', 'end', 'code', 'venue');
+var newAppt = new Array('newPriority', 'newDate', 'newStart', 'newEnd', 'newCode', 'newVenue');
 var timeArray = new Array(newAppt[1], newAppt[2], newAppt[3]);
-
 var apptConcurrent; //to be replaced with 'return' when function put together
 
-//function isConcurrentAppointment(){
+//Functions
+
+function isConcurrentAppointment(){
+	
 //Condition 1 - appointment is concurrent if date, start time and end time values in the new appointment array match same combination in combined appointment array
-/*if (appointmentArr.indexOf(timeArray.toString())){
-			apptConcurrent = true;
-			}*/
-
+var newAppt = new Array('high', '14/10/18', '0800', '1000', 'CSC1401', 'USQ');
+var appointmentArr = new Array('high','14/10/18', '0800', '1000', 'ENM1500', 'UWA'); 
+var timeArray = new Array(newAppt[1], newAppt[2], newAppt[3]);
+  if (appointmentArr.indexOf(timeArray.toString())){
+			apptConcurrent == true;
+      }
+      
 //Condition 2 - date is equal, start time equal to another start time or start time between another start and finish time
+for (var i=0; i< appointmentArr.length; i++) {
 
 
+      if ((appointmentArr[i].date == newDate) && (appointmentArr[i+1].start == newStart)){
+      apptConcurrent == true;
+      alert('Concurrent with another appointment');
+      }
+      else {
+      apptConcurrent == false;
+      }
+      
+      if((appointmentArr[i].date == newDate) && ((appointmentArr[i+2] - appointmentArr[i+1]) > (appointmentArr[i+2] - newStart)) {
+      apptConcurrent == true;
+      alert('Concurrent with another appointment');
+      }
+      else{
+      apptConcurrent == false;
+      }
+}  
 
- for(var i=0; i<appointmentArr.length; i++){
-    if(appointmentArr[i] == newAppt[1]) ;
-    
-    
-    
-   }   
 
- 
-//}//end of function parantheses
+//Condition 3 - date is equal, finish time in between another start and finish time or equal to another finish time
+for (var i=0; i< appointmentArr.length; i++) {
+
+
+      if ((appointmentArr[i].date == newDate) && (appointmentArr[i+1].end == newEnd)){
+      apptConcurrent == true;
+      alert('Concurrent with another appointment');
+      }
+      else {
+      apptConcurrent == false;
+      }
+      
+      if((appointmentArr[i].date == newDate) && ((appointmentArr[i+2] - appointmentArr[i+1]) < (appointmentArr[i+2] - newEnd)) {
+      apptConcurrent == true;
+      alert('Concurrent with another appointment');
+      }
+      else{
+      apptConcurrent == false;
+      }
+}  
+}
+
+
 
 //alert(apptConcurrent);
 
