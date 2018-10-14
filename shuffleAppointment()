@@ -1,1 +1,44 @@
+<html>
+<head>
 
+<script>
+
+//function shuffleAppointments(){
+//include 'click on' for randomise appointments button
+//Constants
+const appointmentArr = [priorityStatus, dateOfAppointment, startTime, endTime, courseCode, locationOfAppointment];
+//Variables
+var priorityStatus = '';
+var dateOfAppointment = '';
+var startTime = '';
+var endTime = '';
+var courseCode = '';
+var locationOfAppointment = '';
+var lengthRemaining = appointmentArr.length;
+var Random = 0;
+var temp = '';
+
+	while(lengthRemaining>1){
+	appointmentArr[1] = ['High', '14/10/18', '0800', '1200', 'CSC1401', 'USQ'];
+	appointmentArr[2] = ['Low', '15/10/18', '0900', '1300', 'ENM1500', 'USQ'];
+	appointmentArr[3] = ['High', '16/10/18', '0800', '1400', 'SVY2301', 'USQ'];
+				Random = Math.floor(Math.random() * lengthRemaining);
+				temp = appointmentArr[lengthRemaining-1];
+				appointmentArr[lengthRemaining-1] = appointmentArr[Random];
+				appointmentArr[Random] = temp;
+				lengthRemaining--;
+			}
+			
+alert(appointmentArr[1]);
+alert(appointmentArr[2]);
+alert(appointmentArr[3]);
+alert(appointmentArr);
+
+//}//
+ 
+</script>
+</head>
+<body>
+
+</body>
+<html>
