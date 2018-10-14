@@ -87,7 +87,7 @@ for (var i=0; i< appointmentArr.length; i++) {
       apptConcurrent == false;
       }
       
-      if((appointmentArr[i].date == newDate) && ((appointmentArr[i+2] - appointmentArr[i+1]) < (appointmentArr[i+2] - newEnd)) {
+      if((appointmentArr[i].date == newDate) && ((appointmentArr[i+2] - appointmentArr[i+1]) > (appointmentArr[i+2] - newEnd)) {
       apptConcurrent == true;
       alert('Concurrent with another appointment');
       }
