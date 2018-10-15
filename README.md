@@ -2,22 +2,22 @@
 Personal Diary in Javascript
 TODO:
 
-Interactive Editing Environment = INPROGRESS (complete other functions will be complete)
+Interactive Editing Environment = DONE
 
 showAppointments=DONE
 
-addAppointment=INPROGRESS (finsh isConcurrentAppointment)
+addAppointment=DONE
 
 isValidDate=DONE
 
 isValidTime=DONE
 
-isConcurrentAppointment=INPROGRESS
+isConcurrentAppointment=DONE
 
-shuffleAppointments=
+shuffleAppointments=Done
 
 sortAppointments=
 
 tallyAppointments=
 
-searchAppointments=INPROGRESS
+searchAppointments=DONE
