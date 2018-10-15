@@ -1,57 +1,33 @@
-<html>
-    <head>
-	<meta charset="UTF-8">
-	<title>Personal Diary</title>
-        <script>
-		//VARIABLES
-		var appointmentArr = [];
-		
-		//CONSTANTS
-		
-		//FUNCTIONS 
-    
-    function searchAppointment(){
-    //search the appointment records using the keywords given by the user
-    //Expected Input: |whatever arguments required for function and it's type|  
-    //Output: |display the searching results on the diary|
-    var index = 0;
-    var out = "";
-    //iterate over appointment arrauy
-    while(index <= appointmentArr.length-1){
-    	var x;
-      //searches each property in object
-    	for (x in appointmentArr[index]) {
-      //if search term is equal to current property, adds all properties to initialised output string
-      
-   		if (appointmentArr.x = searchTerm) {
-   			for (x in appointmentArr[index]){
-   				out += appointmentArr[x] + "";
-   			}
-   			index++
-   		}else{
-   			index++
-   		}
-    	}
-    alert(out);	
-    }    
-    }
-    
-		function assignAppointmentToArray(priority, date, start, end, code, location) {
-		//Creates an appointment objects using the details input by user and stores all appointments in an array 
-			appointmentArr[i] = {
-				priorityStatus: priority,
-				dateOfAppointment: date,
-				startTime: start,
-				endTime: end,
-				courseCode: code,
-				locationOfAppointment: location
-			}; 	
-		}
-		
-		//MAIN CODE
-        </script>
-    </head>
-<body>   
 
-    </body>
-</html>
+function searchArray(){
+	//Call for input of search term from user, implement variables required for comparison function
+sTerm = prompt('your search term');
+index = arrTest.length;
+text = ""
+//invoke comparison function and provide output as an alert
+compareTerms(sTerm,index)
+alert(text);
+
+	function compareTerms(sTerm,index){
+		var x;
+		//if location in index is less than 0 to exit the function
+		if (index<0){
+			return false
+		}
+		//compare all elements in object to the search term, add to result text if that 
+		//object contains search term
+		else {
+			for (x in arrTest[index]){
+				if (arrTest[index][x]==sTerm) {
+					text += "index of "+index + ": ";
+					for (x in arrTest[index]){text += arrTest[index][x] +" ";}
+
+			}
+
+		}
+		//to recursively work through the objects in the array
+		return compareTerms(sTerm,index-1);
+	}
+
+}
+}
