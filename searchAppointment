@@ -1,33 +1,42 @@
-
-function searchArray(){
-	//Call for input of search term from user, implement variables required for comparison function
-sTerm = prompt('your search term');
-index = arrTest.length;
-text = ""
-//invoke comparison function and provide output as an alert
-compareTerms(sTerm,index)
-alert(text);
-
-	function compareTerms(sTerm,index){
-		var x;
-		//if location in index is less than 0 to exit the function
-		if (index<0){
-			return false
-		}
-		//compare all elements in object to the search term, add to result text if that 
-		//object contains search term
-		else {
-			for (x in arrTest[index]){
-				if (arrTest[index][x]==sTerm) {
-					text += "index of "+index + ": ";
-					for (x in arrTest[index]){text += arrTest[index][x] +" ";}
-
-			}
-
-		}
-		//to recursively work through the objects in the array
-		return compareTerms(sTerm,index-1);
-	}
-
-}
-}
+///////////////////////////////////////////////
+		function searchAppointment(){
+			var table3 = document.getElementById("tableThree");
+			var header = table3.createTHead();
+			var hRow = header.insertRow(0);
+			var hPriority = hRow.insertCell(0);
+			var hDate = hRow.insertCell(1);
+			var hStart = hRow.insertCell(2);
+			var hEnd = hRow.insertCell(3);
+			var hSubject = hRow.insertCell(4);
+			var hVenue = hRow.insertCell(5);
+			hPriority.innerHTML = '<b>Priority</b>';
+			hDate.innerHTML = '<b>Date</b>';
+			hStart.innerHTML = '<b>Start</b>';
+			hEnd.innerHTML = '<b>End</b>';
+			hSubject.innerHTML = '<b>Subject</b>';
+			hVenue.innerHTML = '<b>Venue<b/>';
+		//Call for input of search term from user, implement variables required for comparison function
+		sTerm = document.getElementById('searchTerm').value;
+		index = appointmentArr.length;
+		text = "";
+		//invoke comparison function and provide output as an alert
+		compareTerms(sTerm,index);
+		document.getElementById("tableThree").innerHTML += text
+		function compareTerms(sTerm,index){
+			var x;
+			//if location in index is less than 0 to exit the function
+			if (index<0){
+				return false}
+			//compare all elements in object to the search term, add to result text if that 
+			//object contains search term
+			else { for (x in appointmentArr[index]){
+					if (appointmentArr[index][x]==sTerm) {
+						var tr ="<tr>";
+						for (x in appointmentArr[index]){tr +="<td>"+appointmentArr[index][x]+"</td>";}
+						tr += "</tr>"
+						text += tr;
+					}
+				}
+			//to recursively work through the objects in the array
+			return compareTerms(sTerm,index-1);
+			}}}
