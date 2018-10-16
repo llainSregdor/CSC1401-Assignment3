@@ -72,6 +72,39 @@
 				} 
        }
     
+	 //Sort alphabetically by Subject
+ //if(document.getElementById('by').selectedIndex == 2)
+       if (confirm('Sort by subject') == true) {
+       var subject = (appointmentArr[i].courseCode).toString();
+       var compareSubject = subject.charCodeAt(0)
+       
+         for(var i=0; i<appointmentArr.length-1; i++){
+				 for(var j=0; j<appointmentArr.length-1; j++){ 
+						if (compareSubject[j] > compareSubject[j+1]){ 
+							temp = appointmentArr[j];
+							appointmentArr[j] = appointmentArr[j+1];
+							appointmentArr[j+1] = temp;
+						}
+					}
+				}
+       }
+       
+ //Sort alpabetically by Venue
+ //if(document.getElementById('by').selectedIndex == 3)
+       if (confirm('Sort alphabetically by venue') == true) {
+       var venue = (appointmentArr[i].locationOfAppointment).toString();
+       var compareVenue = subject.charCodeAt(0)
+       
+         for(var i=0; i<appointmentArr.length-1; i++){
+				 for(var j=0; j<appointmentArr.length-1; j++){ 
+						if (compareVenue[j] > compareVenue[j+1]){ 
+							temp = appointmentArr[j];
+							appointmentArr[j] = appointmentArr[j+1];
+							appointmentArr[j+1] = temp;
+						}
+					}
+				}
+       }
     
 		function assignAppointmentToArray(priority, date, start, end, code, location) {
 		//Creates an appointment objects using the details input by user and stores all appointments in an array 
