@@ -45,12 +45,32 @@
             }
         }
         
-/*alert(appointmentArr[0]);
-alert(appointmentArr[1]);
-alert(appointmentArr[2]);
-alert(appointmentArr);*/
-    }
-    }
+//Sort based on date
+     //if(document.getElementById('by').selectedIndex == 1)
+       if (confirm('Sort by date') == true) {
+       var date = appointmentArr[].dateofAppointment;
+       var time = parseInt(appointmentArr[].startTime) - 100;
+       var substring = date.split('/');
+       var day = substring[0];
+       var month = substring[1];
+       var year = substring[2]; 
+       var timeTotal = new Date (year, month, day, time, 0, 0); 
+       var compareTime = timeTotal.getTime(); 
+       var temp;
+       
+       
+      
+          
+          for(var i=0; i<appointmentArr.length-1; i++){
+					for(var j=0; j<appointmentArr.length-1; j++){ 
+						if (compareTime[j] > compareTime[j+1]){ 
+							temp = appointmentArr[j];
+							appointmentArr[j] = appointmentArr[j+1];
+							appointmentArr[j+1] = temp;
+						}
+					}
+				} 
+       }
     
     
 		function assignAppointmentToArray(priority, date, start, end, code, location) {
