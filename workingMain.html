@@ -12,11 +12,10 @@
 		var newSubject = '';
 		var newVenue = '';
 		var i = 0;
-		var searchTableRowNumbers = 0;
 		var onceRun = 0;
-		//CONSTANTS
+		
 		//FUNCTIONS 
-          	
+///////////////////////////////////////////////////////////      	
 		//When user clicks Add Appointment button appointment details are stored to temp variables, input data is validated, stored to appointment array and IDE tables updated.
 		function addAppointment() {
 			newPriority = document.getElementById('priorityHigh').checked;
@@ -96,7 +95,6 @@
 							hDates.innerHTML = '<b>Date</b>';
 							hAppointments.innerHTML = '<b>Appointments</b>';}
 								else{deleteFunction()}
-
 			// Script
 			//using findDates function to iterate over the different elements in the array.
 			findDates(index);
@@ -140,14 +138,31 @@
 			var searchTarget;
 			var x;
 			var index = 0;
-			var temp = searchTableRowNumbers;
+			var table;
+			var header;
+			var hRow;
+			var hPriority;
+			var hDate;
+			var hStart;
+			var hEnd;
+			var hSubject;
+			var hVenue;
+			var row;
+			var tPriority;
+			var tDate;
+			var tStart;
+			var tEnd;
+			var tSubject;
+			var tVenue;
+			
 			// Constants
 			const SEARCHTERM = document.getElementById('searchTerm').value;
 			
 			// Script
-			//Remove current search table
+			//Delete current search table
+			searchTableRowNumbers = document.getElementById("tableThree").rows.length
 			if (searchTableRowNumbers !== 0) {
-				for (var i = 0; i < searchTableRowNumbers; i++){
+				for (var i = 0; i < searchTableRowNumbers-1; i++){
 					document.getElementById("tableThree").deleteRow(1);
 				}
 				document.getElementById("tableThree").deleteTHead();
@@ -159,15 +174,15 @@
 						index++;
 						// Add table header when first search hit is found
 						if (index == 1) {
-							var table = document.getElementById("tableThree");
-							var header = table.createTHead();
-							var hRow = header.insertRow(0);
-							var hPriority = hRow.insertCell(0);
-							var hDate = hRow.insertCell(1);
-							var hStart = hRow.insertCell(2);
-							var hEnd = hRow.insertCell(3);
-							var hSubject = hRow.insertCell(4);
-							var hVenue = hRow.insertCell(5);
+							table = document.getElementById("tableThree");
+							header = table.createTHead();
+							hRow = header.insertRow(0);
+							hPriority = hRow.insertCell(0);
+							hDate = hRow.insertCell(1);
+							hStart = hRow.insertCell(2);
+							hEnd = hRow.insertCell(3);
+							hSubject = hRow.insertCell(4);
+							hVenue = hRow.insertCell(5);
 							hPriority.innerHTML = '<b>Priority</b>';
 							hDate.innerHTML = '<b>Date</b>';
 							hStart.innerHTML = '<b>Start</b>';
@@ -176,14 +191,14 @@
 							hVenue.innerHTML = '<b>Venue<b/>';
 						}
 						//Update table with appointment details that has a match with search term.
-						var table = document.getElementById("tableThree");
-						var row = table.insertRow(index);
-						var tPriority = row.insertCell(0);
-						var tDate = row.insertCell(1);
-						var tStart = row.insertCell(2);
-						var tEnd = row.insertCell(3);
-						var tSubject = row.insertCell(4);
-						var tVenue = row.insertCell(5);
+						table = document.getElementById("tableThree");
+						row = table.insertRow(index);
+						tPriority = row.insertCell(0);
+						tDate = row.insertCell(1);
+						tStart = row.insertCell(2);
+						tEnd = row.insertCell(3);
+						tSubject = row.insertCell(4);
+						tVenue = row.insertCell(5);
 						tPriority.innerHTML = appointmentArr[i].priorityStatus;
 						tDate.innerHTML = appointmentArr[i].dateOfAppointment;
 						tStart.innerHTML = appointmentArr[i].startTime;
@@ -195,8 +210,6 @@
 				}
 				
 			}
-			// Update the number of rows in current search result table.
-			searchTableRowNumbers -= temp;
 		}	
 ///////////////////////////////////////////////
 		function shuffleAppointments(){
