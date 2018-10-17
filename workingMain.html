@@ -12,6 +12,7 @@
 		var newSubject = '';
 		var newVenue = '';
 		var i = 0;
+		var searchTableRowNumbers = 0;
 		
 		//CONSTANTS
 		//FUNCTIONS 
@@ -74,65 +75,78 @@
 			tEnd.innerHTML = appointmentArr[(appointmentArr.length)-1].endTime;
 			tSubject.innerHTML = appointmentArr[(appointmentArr.length)-1].subject;
 			tVenue.innerHTML = appointmentArr[(appointmentArr.length)-1].venue;
-			document.getElementById("buttons1").innerHTML = '<p align="center"><input type="button"  value="Randomise Appointment" onclick="shuffleAppointments()"/> | <input type="button"  value="Sort Appointment" onclick="sortAppointment()"/> by <select id="sortDropdown"><option>Priority</option><option>Date</option><option>Start</option><option>End</option><option>Subject</option><option>Venue</option></select></p><hr />';
+			document.getElementById("buttons1").innerHTML = '<p align="center"><input type="button"  value="Randomise Appointment" onclick="shuffleAppointments()"/> | <input type="button"  value="Sort Appointment" onclick="sortAppointment()"/> by <select id="sortDropdown"><option>Priority</option><option>Date</option><option>Subject</option><option>Venue</option></select></p><hr />';
 			document.getElementById("buttons2").innerHTML ='<p align="center"><input type="button"  value="Summary" onclick="tallyAppointments()"/></p><hr />';
 			document.getElementById("buttons3").innerHTML ='<p align="center"><input type="button"  value="Search" onclick="searchAppointment()"/> <input type="text"  id="searchTerm" /></p>';
 		}
 ///////////////////////////////////////////////
 		function tallyAppointments() {
-			
-			for (var i = 0; i < appointmentArr.length; i++){
-				tempDate = appointmentArr[i].dateOfAppointment;
-			}
-			var table = document.getElementById("tableTwo");
-			var header = table.createTHead();
-			var hRow = header.insertRow(0);
-			var hDates = hRow.insertCell(0);
-			var hAppointments = hRow.insertCell(1);
-			hDates.innerHTML = '<b>Date</b>';
-			hAppointments.innerHTML = '<b>Appointments</b>';
+			//CODE TO GO HERE!!!!!
 		}
 //////////////////////////////////////////////
 		function searchAppointment(){
-			var table3 = document.getElementById("tableThree");
-			var header = table3.createTHead();
-			var hRow = header.insertRow(0);
-			var hPriority = hRow.insertCell(0);
-			var hDate = hRow.insertCell(1);
-			var hStart = hRow.insertCell(2);
-			var hEnd = hRow.insertCell(3);
-			var hSubject = hRow.insertCell(4);
-			var hVenue = hRow.insertCell(5);
-			hPriority.innerHTML = '<b>Priority</b>';
-			hDate.innerHTML = '<b>Date</b>';
-			hStart.innerHTML = '<b>Start</b>';
-			hEnd.innerHTML = '<b>End</b>';
-			hSubject.innerHTML = '<b>Subject</b>';
-			hVenue.innerHTML = '<b>Venue<b/>';
-		//Call for input of search term from user, implement variables required for comparison function
-		sTerm = document.getElementById('searchTerm').value;
-		index = appointmentArr.length;
-		text = "";
-		//invoke comparison function and provide output as an alert
-		compareTerms(sTerm,index);
-		document.getElementById("tableThree").innerHTML +=
-		function compareTerms(sTerm,index){
+			// Variables
+			var searchTarget;
 			var x;
-			//if location in index is less than 0 to exit the function
-			if (index<0){return false}
-			//compare all elements in object to the search term, add to result text if that 
-			//object contains search term
-			else { for (x in appointmentArr[index]){
-					if (appointmentArr[index][x]==sTerm) {
-						var tr ="<tr>";
-						for (x in appointmentArr[index]){tr +="<td>"+appointmentArr[index][x]+"</td>";}
-						tr += "</tr>"
-						text += tr;
+			var index = 0;
+			var temp = searchTableRowNumbers;
+			// Constants
+			const SEARCHTERM = document.getElementById('searchTerm').value;
+			
+			// Script
+			//Remove current search table
+			if (searchTableRowNumbers !== 0) {
+				for (var i = 0; i < searchTableRowNumbers; i++){
+					document.getElementById("tableThree").deleteRow(1);
+				}
+				document.getElementById("tableThree").deleteTHead();
+			}
+			// Compare searchterm with each object in each appointment
+			for (var i = 0; i < appointmentArr.length; i++){
+				for (x in appointmentArr[i]){
+					if (appointmentArr[i][x]==SEARCHTERM) {
+						index++;
+						// Add table header when first search hit is found
+						if (index == 1) {
+							var table = document.getElementById("tableThree");
+							var header = table.createTHead();
+							var hRow = header.insertRow(0);
+							var hPriority = hRow.insertCell(0);
+							var hDate = hRow.insertCell(1);
+							var hStart = hRow.insertCell(2);
+							var hEnd = hRow.insertCell(3);
+							var hSubject = hRow.insertCell(4);
+							var hVenue = hRow.insertCell(5);
+							hPriority.innerHTML = '<b>Priority</b>';
+							hDate.innerHTML = '<b>Date</b>';
+							hStart.innerHTML = '<b>Start</b>';
+							hEnd.innerHTML = '<b>End</b>';
+							hSubject.innerHTML = '<b>Subject</b>';
+							hVenue.innerHTML = '<b>Venue<b/>';
+						}
+						//Update table with appointment details that has a match with search term.
+						var table = document.getElementById("tableThree");
+						var row = table.insertRow(index);
+						var tPriority = row.insertCell(0);
+						var tDate = row.insertCell(1);
+						var tStart = row.insertCell(2);
+						var tEnd = row.insertCell(3);
+						var tSubject = row.insertCell(4);
+						var tVenue = row.insertCell(5);
+						tPriority.innerHTML = appointmentArr[i].priorityStatus;
+						tDate.innerHTML = appointmentArr[i].dateOfAppointment;
+						tStart.innerHTML = appointmentArr[i].startTime;
+						tEnd.innerHTML = appointmentArr[i].endTime;
+						tSubject.innerHTML = appointmentArr[i].subject;
+						tVenue.innerHTML = appointmentArr[i].venue;
+						searchTableRowNumbers++
 					}
 				}
-			//to recursively work through the objects in the array
-			return compareTerms(sTerm,index-1);
-			}}}
+				
+			}
+			// Update the number of rows in current search result table.
+			searchTableRowNumbers -= temp;
+		}	
 ///////////////////////////////////////////////
 		function shuffleAppointments(){
 			for (var i = 0; i < appointmentArr.length; i++){
@@ -180,6 +194,159 @@
 				tVenue.innerHTML = appointmentArr[i].venue;
 			}
 		}
+///////////////////////////////////////////////
+//Allow the user to sort all appointments in appointmentArr based on one of the following attributes; 
+//Priority, Date, Subject, Date, or Venueand display the sorted appointments on diary
+//Expected Input: |whatever arguments required for function and it's type| 
+//Output: |Display the sorted appointments on diary when an attribute is selected in the dropdown list|
+///////////////////////////////////////////////
+		function sortAppointment(){
+			sortField = document.getElementById('sortDropdown').value;
+			//Sort appointment array order based on priority
+			if (sortField == 'Priority'){
+				for (var i = 0; i < appointmentArr.length-1; i++){
+					if ((appointmentArr[i].priorityStatus == 'low') && (appointmentArr[i+1].priorityStatus == 'high')) { 
+						var temp = appointmentArr[i];
+						appointmentArr[i] = appointmentArr[i+1];
+						appointmentArr[i+1] = temp;
+					}
+				}
+			}
+			//Sort appointment array order based on date
+			if (sortField == 'Date') {
+				// Variables
+				var date;
+				var substring;
+				var day;
+				var month;
+				var year;
+				var time;
+				var timeTotal;
+				var temp;
+				var tempArray = [];
+				//Creat temp array of getTime() values
+				for (var i = 0; i < appointmentArr.length; i++){
+					// Create date object for currently indexed appointment
+					date = appointmentArr[i].dateOfAppointment;
+					substring = date.split('/');
+					day = substring[0];
+					month = substring[1]-1;
+					year = substring[2]; 
+					time = parseInt(appointmentArr[i].startTime)/100; 
+					timeTotal = new Date (year, month, day, time, 0, 0); 
+					tempArray[i] = timeTotal.getTime();
+				}
+				// Pass through the array length-1 times
+				for (var i = 0; i < appointmentArr.length-1; i++){
+					// For each pair of consecutive dates
+					for (j = 0; j <appointmentArr.length-1; j++){
+						// Test if pair is out of order. Update temp array and appointment array if true.
+						if (tempArray[j] > tempArray[j+1]){ 
+							temp = appointmentArr[j];
+							appointmentArr[j] = appointmentArr[j+1];
+							appointmentArr[j+1] = temp;
+							temp = tempArray[j];
+							tempArray[j] = tempArray[j+1];
+							tempArray[j+1] = temp;
+						}
+					}
+				} 
+			}
+			//Sort appointment array order based on subject (alphabetically)
+			if (sortField == 'Subject') {
+				var subject;
+				var subjectCurrent;
+				var compareCurrent;
+				var subjectNext;
+				var compareNext;
+				var index = 0;
+				for(var i=0; i<appointmentArr.length-1; i++){
+					for(var j=0; j<appointmentArr.length-1; j++){
+						subjectCurrent = (appointmentArr[j].subject).toString();
+						compareCurrent = subjectCurrent.charCodeAt(0);
+						subjectNext = (appointmentArr[j+1].subject).toString();
+						compareNext = subjectNext.charCodeAt(0);
+						index = 0;
+						while (compareCurrent == compareNext || compareCurrent.length == (index+1) || compareNext.length == (index+1)){
+							index++;
+							compareCurrent = subjectCurrent.charCodeAt(index);
+							compareNext = subjectNext.charCodeAt(index);
+						}
+						if (compareCurrent > compareNext){ 
+							temp = appointmentArr[j];
+							appointmentArr[j] = appointmentArr[j+1];
+							appointmentArr[j+1] = temp;
+						}
+					}
+				}
+			}
+			//Sort appointment array order based on venue (alphabetically)
+			if (sortField == 'Venue') {
+				var venue;
+				var venueCurrent;
+				var compareCurrent;
+				var venueNext;
+				var compareNext;
+				var index = 0;
+				for(var i=0; i<appointmentArr.length-1; i++){
+					for(var j=0; j<appointmentArr.length-1; j++){
+						venueCurrent = (appointmentArr[j].venue).toString();
+						compareCurrent = venueCurrent.charCodeAt(0);
+						venueNext = (appointmentArr[j+1].venue).toString();
+						compareNext = venueNext.charCodeAt(0);
+						index = 0;
+						while (compareCurrent == compareNext || compareCurrent.length == (index+1) || compareNext.length == (index+1)){
+							index++;
+							compareCurrent = venueCurrent.charCodeAt(index);
+							compareNext = venueNext.charCodeAt(index);
+						}
+						if (compareCurrent > compareNext){ 
+							temp = appointmentArr[j];
+							appointmentArr[j] = appointmentArr[j+1];
+							appointmentArr[j+1] = temp;
+						}
+					}
+				}
+			}
+			//Update table with new array order
+			for (var i = 0; i < appointmentArr.length; i++){
+				document.getElementById("tableOne").deleteRow(1);
+			}
+			document.getElementById("tableOne").deleteTHead();
+			var table = document.getElementById("tableOne");
+			var header = table.createTHead();
+			var hRow = header.insertRow(0);
+			var hPriority = hRow.insertCell(0);
+			var hDate = hRow.insertCell(1);
+			var hStart = hRow.insertCell(2);
+			var hEnd = hRow.insertCell(3);
+			var hSubject = hRow.insertCell(4);
+			var hVenue = hRow.insertCell(5);
+			hPriority.innerHTML = '<b>Priority</b>';
+			hDate.innerHTML = '<b>Date</b>';
+			hStart.innerHTML = '<b>Start</b>';
+			hEnd.innerHTML = '<b>End</b>';
+			hSubject.innerHTML = '<b>Subject</b>';
+			hVenue.innerHTML = '<b>Venue<b/>';
+			for (var i = 0; i < appointmentArr.length; i++){
+				var row = table.insertRow(i+1);
+				var tPriority = row.insertCell(0);
+				var tDate = row.insertCell(1);
+				var tStart = row.insertCell(2);
+				var tEnd = row.insertCell(3);
+				var tSubject = row.insertCell(4);
+				var tVenue = row.insertCell(5);
+				tPriority.innerHTML = appointmentArr[i].priorityStatus;
+				tDate.innerHTML = appointmentArr[i].dateOfAppointment;
+				tStart.innerHTML = appointmentArr[i].startTime;
+				tEnd.innerHTML = appointmentArr[i].endTime;
+				tSubject.innerHTML = appointmentArr[i].subject;
+				tVenue.innerHTML = appointmentArr[i].venue;
+			}
+		
+		}
+		
+		
 ///////////////////////////////////////////////
 		function isValidDate(date){
 			day = parseInt(date.substring(0,2));
