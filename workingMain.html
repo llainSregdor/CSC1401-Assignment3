@@ -14,9 +14,10 @@
 		var i = 0;
 		var onceRun = 0;
 		
-		//FUNCTIONS 
-///////////////////////////////////////////////////////////      	
-		//When user clicks Add Appointment button appointment details are stored to temp variables, input data is validated, stored to appointment array and IDE tables updated.
+		//FUNCTIONS     
+		/**
+		*When user clicks Add Appointment button appointment details are stored to temp variables, input data is validated, stored to appointment array and IDE tables updated.
+		*/
 		function addAppointment() {
 			newPriority = document.getElementById('priorityHigh').checked;
 			if (newPriority == true) {
@@ -41,19 +42,40 @@
 				showAppointment()
 			}
 		}
-///////////////////////////////////////////////////////////
-		//Find and display on IDE each appointment that is added
+
+		/**
+		* Updates and displays table of current appointments input by user.
+		*/
 		function showAppointment(){
+			// Variables
 		    var table = document.getElementById("tableOne");
+			var header;
+			var hRow;
+			var hPriority;
+			var hDate;
+			var hStart;
+			var hEnd;
+			var hSubject;
+			var hVenue;
+			var row;
+			var tPriority;
+     		var tDate;
+     		var tStart;
+     		var tEnd;
+     		var tSubject;
+     		var tVenue;
+			
+			//Script
+			// Creates table header when first appointment is input by user.
 			if (appointmentArr.length == 1){
-				var header = table.createTHead();
-				var hRow = header.insertRow(0);
-				var hPriority = hRow.insertCell(0);
-				var hDate = hRow.insertCell(1);
-				var hStart = hRow.insertCell(2);
-				var hEnd = hRow.insertCell(3);
-				var hSubject = hRow.insertCell(4);
-				var hVenue = hRow.insertCell(5);
+				header = table.createTHead();
+				hRow = header.insertRow(0);
+				hPriority = hRow.insertCell(0);
+				hDate = hRow.insertCell(1);
+				hStart = hRow.insertCell(2);
+				hEnd = hRow.insertCell(3);
+				hSubject = hRow.insertCell(4);
+				hVenue = hRow.insertCell(5);
 				hPriority.innerHTML = '<b>Priority</b>';
 				hDate.innerHTML = '<b>Date</b>';
 				hStart.innerHTML = '<b>Start</b>';
@@ -61,37 +83,52 @@
 				hSubject.innerHTML = '<b>Subject</b>';
 				hVenue.innerHTML = '<b>Venue<b/>';
 			}
-			var row = table.insertRow(appointmentArr.length);
-			var tPriority = row.insertCell(0);
-     		var tDate = row.insertCell(1);
-     		var tStart = row.insertCell(2);
-     		var tEnd = row.insertCell(3);
-     		var tSubject = row.insertCell(4);
-     		var tVenue = row.insertCell(5);
+			// Updates table with subsequent appointments.
+			row = table.insertRow(appointmentArr.length);
+			tPriority = row.insertCell(0);
+     		tDate = row.insertCell(1);
+     		tStart = row.insertCell(2);
+     		tEnd = row.insertCell(3);
+     		tSubject = row.insertCell(4);
+     		tVenue = row.insertCell(5);
 			tPriority.innerHTML = appointmentArr[(appointmentArr.length)-1].priorityStatus;
 			tDate.innerHTML = appointmentArr[(appointmentArr.length)-1].dateOfAppointment;
 			tStart.innerHTML = appointmentArr[(appointmentArr.length)-1].startTime;
 			tEnd.innerHTML = appointmentArr[(appointmentArr.length)-1].endTime;
 			tSubject.innerHTML = appointmentArr[(appointmentArr.length)-1].subject;
 			tVenue.innerHTML = appointmentArr[(appointmentArr.length)-1].venue;
+			// Dynamically adds buttons for randomise, sort, tally and search features once first appointment has been input.
 			document.getElementById("buttons1").innerHTML = '<p align="center"><input type="button"  value="Randomise Appointment" onclick="shuffleAppointments()"/> | <input type="button"  value="Sort Appointment" onclick="sortAppointment()"/> by <select id="sortDropdown"><option>Priority</option><option>Date</option><option>Subject</option><option>Venue</option></select></p><hr />';
 			document.getElementById("buttons2").innerHTML ='<p align="center"><input type="button"  value="Summary" onclick="tallyAppointments()"/></p><hr />';
 			document.getElementById("buttons3").innerHTML ='<p align="center"><input type="button"  value="Search" onclick="searchAppointment()"/> <input type="text"  id="searchTerm" /></p>';
 		}
-///////////////////////////////////////////////
+
+		/**
+		* Gets each appointment date and outputs a tally of number of appointments for each date.
+		*/
 		function tallyAppointments() {
 			// Variables
 			var table2 = document.getElementById("tableTwo");
 			var index = appointmentArr.length-1;
 			var dates = new Array;
 			var tally = new Array;
-			var counter = 1
+			var counter = 1;
+			var header;
+			var hRow;
+			var hDates;
+			var hAppointments;
+			var row;
+			var tDates;
+		    var tAppointments;
+			var mTable;
+			var rowCount;
+			
 			//If function hasn't been run create table, if not call delete function to remove body.
 			if(onceRun==0){
-						var header = table2.createTHead();
-						var hRow = header.insertRow(0);
-						var hDates = hRow.insertCell(0);
-						var hAppointments = hRow.insertCell(1);
+						header = table2.createTHead();
+						hRow = header.insertRow(0);
+						hDates = hRow.insertCell(0);
+						hAppointments = hRow.insertCell(1);
 							hDates.innerHTML = '<b>Date</b>';
 							hAppointments.innerHTML = '<b>Appointments</b>';}
 								else{deleteFunction()}
@@ -111,9 +148,9 @@
  			tally = dates.reduce((t, v) => (t[v] = (t[v] || 0) + 1, t), {});
 			for (x in tally){
 					//insert the rows into the table with the results
-					var row = table2.insertRow(counter);
-					var tDates = row.insertCell(0);
-		     		var tAppointments = row.insertCell(1);
+					row = table2.insertRow(counter);
+					tDates = row.insertCell(0);
+		     		tAppointments = row.insertCell(1);
 				tDates.innerHTML=x;
 				tAppointments.innerHTML=tally[x] 
 				counter ++
@@ -124,15 +161,18 @@
 						return findDates(i-1)
 				}
 				function deleteFunction() {
-					var mTable = document.getElementById("tableTwo");
-						var rowCount = mTable.rows.length;
+					mTable = document.getElementById("tableTwo");
+					rowCount = mTable.rows.length;
 						for (var x=rowCount-1; x>0; x--) {
    								mTable.deleteRow(x);
 							}
 				}
 			onceRun +=1
 			return onceRun}
-//////////////////////////////////////////////
+			
+		/**
+		* Takes search term and searches appointments for matches. Outputs results to table.
+		*/
 		function searchAppointment(){
 			// Variables
 			var searchTarget;
@@ -211,15 +251,40 @@
 				
 			}
 		}	
-///////////////////////////////////////////////
+			
+		/**
+		* Randomises appointment order in array and updates table.
+		*/
 		function shuffleAppointments(){
+			// Variables
+			var lengthRemaining = appointmentArr.length;
+			var random;
+			var temp;
+			var table;
+			var header;
+			var hRow;
+			var hPriority;
+			var hDate;
+			var hStart;
+			var hEnd;
+			var hSubject;
+			var hVenue;
+			var row;
+			var tPriority;
+			var tDate;
+			var tStart;
+			var tEnd;
+			var tSubject;
+			var tVenue;
+			
+			// Script
+			// Deletes current table
 			for (var i = 0; i < appointmentArr.length; i++){
 				document.getElementById("tableOne").deleteRow(1);
 			}
 			document.getElementById("tableOne").deleteTHead();
-			var lengthRemaining = appointmentArr.length;
-			var random;
-			var temp;
+			
+			// Randomises order of appointments in appointment array.
 			while(lengthRemaining>1){
 				random = Math.floor(Math.random() * lengthRemaining);
 				temp = appointmentArr[lengthRemaining-1];
@@ -227,29 +292,32 @@
 				appointmentArr[random] = temp;
 				lengthRemaining--;
 			}
-			var table = document.getElementById("tableOne");
-			var header = table.createTHead();
-			var hRow = header.insertRow(0);
-			var hPriority = hRow.insertCell(0);
-			var hDate = hRow.insertCell(1);
-			var hStart = hRow.insertCell(2);
-			var hEnd = hRow.insertCell(3);
-			var hSubject = hRow.insertCell(4);
-			var hVenue = hRow.insertCell(5);
+			
+			// Generates new table header
+			table = document.getElementById("tableOne");
+			header = table.createTHead();
+			hRow = header.insertRow(0);
+			hPriority = hRow.insertCell(0);
+			hDate = hRow.insertCell(1);
+			hStart = hRow.insertCell(2);
+			hEnd = hRow.insertCell(3);
+			hSubject = hRow.insertCell(4);
+			hVenue = hRow.insertCell(5);
 			hPriority.innerHTML = '<b>Priority</b>';
 			hDate.innerHTML = '<b>Date</b>';
 			hStart.innerHTML = '<b>Start</b>';
 			hEnd.innerHTML = '<b>End</b>';
 			hSubject.innerHTML = '<b>Subject</b>';
 			hVenue.innerHTML = '<b>Venue<b/>';
+			// Generates new table rows to display updated appointment order.
 			for (var i = 0; i < appointmentArr.length; i++){
-				var row = table.insertRow(i+1);
-				var tPriority = row.insertCell(0);
-				var tDate = row.insertCell(1);
-				var tStart = row.insertCell(2);
-				var tEnd = row.insertCell(3);
-				var tSubject = row.insertCell(4);
-				var tVenue = row.insertCell(5);
+				row = table.insertRow(i+1);
+				tPriority = row.insertCell(0);
+				tDate = row.insertCell(1);
+				tStart = row.insertCell(2);
+				tEnd = row.insertCell(3);
+				tSubject = row.insertCell(4);
+				tVenue = row.insertCell(5);
 				tPriority.innerHTML = appointmentArr[i].priorityStatus;
 				tDate.innerHTML = appointmentArr[i].dateOfAppointment;
 				tStart.innerHTML = appointmentArr[i].startTime;
@@ -258,12 +326,12 @@
 				tVenue.innerHTML = appointmentArr[i].venue;
 			}
 		}
-///////////////////////////////////////////////
-//Allow the user to sort all appointments in appointmentArr based on one of the following attributes; 
-//Priority, Date, Subject, Date, or Venueand display the sorted appointments on diary
-//Expected Input: |whatever arguments required for function and it's type| 
-//Output: |Display the sorted appointments on diary when an attribute is selected in the dropdown list|
-///////////////////////////////////////////////
+		/**
+		* Allow the user to sort all appointments in appointmentArr based on one of the following attributes; 
+		* Priority, Date, Subject, Date, or Venueand display the sorted appointments on diary
+		* Expected Input: |whatever arguments required for function and it's type| 
+		* Output: |Display the sorted appointments on diary when an attribute is selected in the dropdown list|
+		*/		
 		function sortAppointment(){
 			sortField = document.getElementById('sortDropdown').value;
 			//Sort appointment array order based on priority
