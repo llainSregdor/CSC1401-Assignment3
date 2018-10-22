@@ -16,8 +16,8 @@ isConcurrentAppointment=DONE
 
 shuffleAppointments=Done
 
-sortAppointments=
+sortAppointments=DONE
 
-tallyAppointments=
+tallyAppointments=DONE
 
 searchAppointments=DONE
